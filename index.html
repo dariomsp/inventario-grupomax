@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            background-color: #062f4d;
+            color: white;
+        }
+        .encabezado {
+            height: 50px;
+            background-color: #033960;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: 1px solid rgb(90, 90, 90);
+        }
+
+        .encabezado_logo a img {
+            width: 40px;
+            display: flex;
+            margin-left: 10px;
+            outline: none;
+            cursor: initial;
+        }
+        .registracion{
+            margin: 50px;
+        }
+
+        .registracion h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .registracion_input {
+            height: 30px;
+            padding: 0 5px;
+            background-color: #033960;
+            color: white;
+            border: 1px solid rgb(90, 90, 90);
+            border-radius: 5px;
+        }
+
+        .registracion_button{
+            border: none;
+            background-color: white;
+            border-radius: 5px;
+            height: 30px;
+            width: 60px;
+            font-weight: 600;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header class="encabezado">
+        <div class="encabezado_logo">
+            <a href="https://ibb.co/4pXTTnv"><img src="https://i.ibb.co/w4PWWFG/Sin-t-tulo-2.png" alt="Sin-t-tulo-2" border="0" /></a>
+        </div>
+    </header>
+    <div class ="registracion" id="registracion">
+        <h3>Registrar material</h3>
+        <form action="">
+            <input class="registracion_input material" type="text" name="material" id="material" placeholder="Material">
+            <select class="registracion_input selector" name="unidad" id="unidad">
+                <option value="ud">UD</option>
+                <option value="m2">Metros cuadrados</option>
+            </select>
+            <input class="registracion_input cantidad" type="number" name="cantidadInicial" id="cantidadInicial" placeholder="Cantidad inicial">
+            <button type="button" class="registracion_button" onclick="agregarMaterial(material)">Cargar</button>
+        </form>
+    </div>
+
+    
+
+    <script>
+        let id=0;
+        class Material {
+            constructor(){
+                this.material = {
+                    id: id++,
+                    nombre:'',
+                    unidad:'',
+                    cantidad:null
+                } 
+            }
+            agregar(nombre, unidad,cantidadInicial){
+                const nombreMaterial = document.getElementById("material").value;
+                const unidadMaterial = document.getElementById("unidad").value;
+                const cantidadMaterial = document.getElementById("cantidadInicial").value;
+                this.material.nombre=nombreMaterial;
+                this.material.unidad=unidadMaterial;
+                this.material.cantidad=cantidadMaterial;
+                return this.material;
+            }
+            
+        }
+        
+        
+        function agregarMaterial(){
+            const materialAgregado = new Material()
+            materialAgregado.agregar()
+            materiales.push(materialAgregado)
+            console.log(`${materialAgregado.material.cantidad} ${materialAgregado.material.nombre} agregado.`)
+            console.log(materiales)
+        }
+
+        let materiales = [];
+        
+    
+    </script>
+
+</body>
+</html>
